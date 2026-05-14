@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Midhula Joga — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f4f6fb;
+  --bg2:#eef1f8;
+  --card:#ffffff;
+  --ink:#1a1d2e;
+  --ink2:#4a4f68;
+  --ink3:#8a90a8;
+  --accent:#4f6ef7;
+  --accent-light:#eef1fd;
+  --green:#2db87a;
+  --green-light:#e8f8f1;
+  --orange:#f47c3c;
+  --orange-light:#fef2eb;
+  --purple:#8b5cf6;
+  --purple-light:#f3effe;
+  --border:#e2e6f0;
+  --border2:#d0d6e8;
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(244,246,251,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 2.5rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:var(--font-head);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;color:var(--ink)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 2.5rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#f4f6fb 0%,#edf0fa 50%,#f0f4fb 100%)}
+.hero::before{content:'';position:absolute;top:-120px;right:-80px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(79,110,247,0.09) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(45,184,122,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;padding-top:90px;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.hero-left{}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);border:1px solid rgba(79,110,247,0.2);border-radius:100px;padding:5px 14px;font-size:0.76rem;font-weight:600;color:var(--accent);letter-spacing:0.04em;margin-bottom:1.75rem}
+.hero-badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+h1.hero-name{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.02;letter-spacing:-0.04em;color:var(--ink);margin-bottom:0.5rem}
+h1.hero-name .accent{color:var(--accent)}
+.hero-title{font-family:var(--font-head);font-size:clamp(1rem,2vw,1.4rem);font-weight:500;color:var(--ink2);margin-bottom:1.25rem;letter-spacing:-0.01em}
+.hero-desc{font-size:0.95rem;color:var(--ink3);max-width:480px;line-height:1.85;margin-bottom:2rem}
+.hero-ctas{display:flex;gap:0.85rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:11px 26px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.2s;border:none;letter-spacing:0.01em}
+.btn-primary:hover{background:#3a5be0;transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--ink);padding:11px 26px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.2s;border:1.5px solid var(--border2)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:2rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat-item .num{font-family:var(--font-head);font-size:1.85rem;font-weight:800;color:var(--ink);letter-spacing:-0.03em;line-height:1}
+.stat-item .lbl{font-size:0.74rem;color:var(--ink3);font-weight:400;margin-top:4px}
+.hero-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:1.75rem;min-width:200px;display:flex;flex-direction:column;gap:1rem;box-shadow:0 4px 24px rgba(79,110,247,0.08)}
+.hc-row{display:flex;align-items:center;gap:10px}
+.hc-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.hc-label{font-size:0.75rem;color:var(--ink3);font-weight:400}
+.hc-val{font-size:0.88rem;font-weight:700;color:var(--ink)}
+
+section{padding:5rem 2.5rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:4px 12px;border-radius:100px;margin-bottom:1rem}
+h2.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;color:var(--ink);margin-bottom:0.75rem}
+.section-sub{color:var(--ink3);font-size:0.92rem;max-width:480px;line-height:1.8;margin-bottom:2.5rem}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0.9rem}
+.skill-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.4rem;transition:all 0.2s}
+.skill-card:hover{border-color:var(--border2);box-shadow:0 4px 20px rgba(79,110,247,0.07);transform:translateY(-2px)}
+.skill-icon{font-size:1.3rem;margin-bottom:0.65rem}
+.skill-name{font-family:var(--font-head);font-size:0.85rem;font-weight:700;color:var(--ink);margin-bottom:0.35rem}
+.skill-items{font-size:0.76rem;color:var(--ink3);line-height:1.75}
+
+.exp-list{display:flex;flex-direction:column;gap:1rem}
+.exp-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.6rem 1.75rem;position:relative;overflow:hidden;transition:all 0.2s}
+.exp-card:hover{box-shadow:0 6px 28px rgba(0,0,0,0.06);border-color:var(--border2)}
+.exp-stripe{position:absolute;left:0;top:0;bottom:0;width:4px}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.85rem}
+.exp-role{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--ink)}
+.exp-badge{padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:700;letter-spacing:0.04em}
+.badge-google{background:#e8f5e9;color:#2e7d32}
+.badge-aws{background:#fff3e0;color:#b45309}
+.exp-date{font-size:0.76rem;color:var(--ink3);margin-top:4px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
+.exp-bullets li{font-size:0.85rem;color:var(--ink2);padding-left:1.2rem;position:relative;line-height:1.7}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:0.7rem;top:3px}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem}
+.proj-card{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;cursor:pointer}
+.proj-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.08);border-color:transparent}
+.proj-banner{height:6px}
+.proj-top{padding:1.5rem 1.6rem 1.1rem;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.9rem}
+.proj-tag{font-size:0.68rem;font-weight:700;letter-spacing:0.05em;padding:3px 9px;border-radius:100px}
+.tag-blue{background:var(--accent-light);color:var(--accent)}
+.tag-green{background:var(--green-light);color:#1a8a58}
+.tag-orange{background:var(--orange-light);color:#c45c1a}
+.tag-purple{background:var(--purple-light);color:#6d3fd4}
+.proj-name{font-family:var(--font-head);font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:0.65rem;letter-spacing:-0.02em}
+.proj-desc{font-size:0.83rem;color:var(--ink2);line-height:1.75;margin-bottom:0.85rem}
+.proj-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:auto}
+.stack-pill{font-size:0.7rem;font-weight:500;color:var(--ink3);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:2px 8px}
+.proj-bottom{padding:0.9rem 1.6rem;border-top:1px solid var(--border);display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap}
+.proj-link{font-size:0.78rem;font-weight:600;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:4px;transition:opacity 0.2s}
+.proj-link:hover{opacity:0.75}
+.proj-link svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5}
+.proj-role{font-size:0.74rem;color:var(--ink3);margin-left:auto}
+
+/* EXPANDED PANEL */
+.proj-expand{display:none;padding:0 1.6rem 1.4rem;border-top:1px dashed var(--border);background:#fafbfd}
+.proj-expand.open{display:block}
+.expand-title{font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin:1rem 0 0.5rem}
+.expand-points{list-style:none;display:flex;flex-direction:column;gap:0.35rem}
+.expand-points li{font-size:0.82rem;color:var(--ink2);padding-left:1.1rem;position:relative;line-height:1.7}
+.expand-points li::before{content:'→';position:absolute;left:0;color:var(--green);font-size:0.75rem}
+
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.9rem}
+.ach-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.2s}
+.ach-card:hover{border-color:var(--border2);box-shadow:0 4px 16px rgba(0,0,0,0.05)}
+.ach-emoji{font-size:1.4rem;margin-bottom:0.65rem}
+.ach-text{font-size:0.83rem;color:var(--ink2);line-height:1.7}
+
+.edu-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}
+.edu-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:all 0.2s}
+.edu-card:hover{border-color:var(--border2);box-shadow:0 4px 20px rgba(0,0,0,0.05)}
+.edu-degree{font-family:var(--font-head);font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.2rem}
+.edu-inst{font-size:0.84rem;color:var(--ink2);margin-bottom:0.75rem}
+.edu-score{display:inline-flex;align-items:center;gap:6px;background:var(--green-light);color:#1a8a58;font-size:0.76rem;font-weight:700;padding:4px 12px;border-radius:100px}
+.edu-year{font-size:0.74rem;color:var(--ink3);margin-top:0.5rem}
+
+.cta-banner{background:linear-gradient(135deg,#4f6ef7 0%,#7c3aed 100%);border-radius:20px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.06)}
+.cta-banner::after{content:'';position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.cta-banner h2{font-family:var(--font-head);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:#fff;margin-bottom:0.65rem;letter-spacing:-0.03em;position:relative;z-index:1}
+.cta-banner p{color:rgba(255,255,255,0.65);font-size:0.9rem;margin-bottom:2rem;position:relative;z-index:1}
+.contact-links{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;position:relative;z-index:1}
+.contact-link{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);text-decoration:none;font-size:0.8rem;font-weight:500;transition:all 0.2s;background:rgba(255,255,255,0.08)}
+.contact-link:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4)}
+.contact-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+footer{text-align:center;padding:1.75rem;font-size:0.76rem;color:var(--ink3)}
+
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+}
+@media(max-width:680px){
+  nav{padding:0 1.25rem}
+  .hero,.section{padding:5rem 1.25rem}
+  section{padding:3.5rem 1.25rem}
+  .hero-stats{gap:1.25rem;flex-wrap:wrap}
+  .cta-banner{padding:2.5rem 1.5rem}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Midhula Joga</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge"><div class="hero-badge-dot"></div>Open to Internships & Jobs</div>
+      <h1 class="hero-name">Midhula<br/><span class="accent">Joga</span></h1>
+      <p class="hero-title">AI/ML Engineer · Full-Stack Builder</p>
+      <p class="hero-desc">B.Tech CSE student (CGPA 9.28) at Gayatri Vidya Parishad. I build real-world AI products — from legal document analyzers to generative AI apps. Interned at Google & AWS. Always shipping.</p>
+      <div class="hero-ctas">
+        <a href="mailto:midhula.joga1234@gmail.com" class="btn-primary">Say hello 👋</a>
+        <a href="#projects" class="btn-outline">View my work</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="num">9.28</div><div class="lbl">CGPA / 10</div></div>
+        <div class="stat-item"><div class="num">350+</div><div class="lbl">LeetCode solved</div></div>
+        <div class="stat-item"><div class="num">2</div><div class="lbl">Industry internships</div></div>
+        <div class="stat-item"><div class="num">6</div><div class="lbl">Projects shipped</div></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-row">
+        <div class="hc-icon" style="background:var(--accent-light)">🎓</div>
+        <div><div class="hc-label">University</div><div class="hc-val">GVP, Kommadi</div></div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon" style="background:var(--green-light)">🤖</div>
+        <div><div class="hc-label">Interned at</div><div class="hc-val">Google · AWS</div></div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon" style="background:var(--orange-light)">📍</div>
+        <div><div class="hc-label">Location</div><div class="hc-val">Andhra Pradesh, IN</div></div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon" style="background:var(--purple-light)">⚡</div>
+        <div><div class="hc-label">Focus</div><div class="hc-val">GenAI · LLMs · ML</div></div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon" style="background:#fff3e0">📅</div>
+        <div><div class="hc-label">Available from</div><div class="hc-val">Immediately</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background:#fff">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Skills</div>
+    <h2 class="section-title fade-up">What I work with</h2>
+    <p class="section-sub fade-up">A blend of ML research tools and full-stack engineering to build end-to-end AI applications.</p>
+    <div class="skills-grid">
+      <div class="skill-card fade-up"><div class="skill-icon">🧠</div><div class="skill-name">AI & Machine Learning</div><div class="skill-items">TensorFlow · Scikit-learn · Deep Learning · NLP · Supervised Learning</div></div>
+      <div class="skill-card fade-up"><div class="skill-icon">🤖</div><div class="skill-name">Generative AI & LLMs</div><div class="skill-items">Hugging Face · Large Language Models · Prompt Engineering · AI Automation</div></div>
+      <div class="skill-card fade-up"><div class="skill-icon">🐍</div><div class="skill-name">Languages</div><div class="skill-items">Python · Java · SQL · C · Pandas · NumPy</div></div>
+      <div class="skill-card fade-up"><div class="skill-icon">🌐</div><div class="skill-name">Web & Frameworks</div><div class="skill-items">Flask · Streamlit · HTML · CSS · JavaScript · REST APIs</div></div>
+      <div class="skill-card fade-up"><div class="skill-icon">🛠</div><div class="skill-name">Tools & Platforms</div><div class="skill-items">Git · GitHub · Jupyter Notebook · VS Code · AWS Cloud</div></div>
+      <div class="skill-card fade-up"><div class="skill-icon">⚙️</div><div class="skill-name">Core CS</div><div class="skill-items">DSA · DBMS · OOP · Operating Systems · Computer Networks</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Experience & Certifications</div>
+    <h2 class="section-title fade-up">Internships & Certified Learning</h2>
+    <p class="section-sub fade-up">
+      Hands-on AI/ML internship experience combined with industry-certified training from global technology leaders.
+    </p>
+
+    <div class="projects-grid">
+
+      <!-- AWS -->
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#f59e0b,#f97316)"></div>
+
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-orange">☁ AWS</span>
+            <span class="proj-tag tag-orange">Gen-AI Internship</span>
+          </div>
+
+          <div class="proj-name">AWS Generative AI Virtual Internship</div>
+
+          <div class="proj-desc">
+            Completed a Generative AI Virtual Internship focused on Large Language Models, Prompt Engineering,
+            AI automation workflows, and cloud-based AI solutions using AWS technologies.
+          </div>
+
+          <div class="proj-stack">
+            <span class="stack-pill">Generative AI</span>
+            <span class="stack-pill">LLMs</span>
+            <span class="stack-pill">AWS Cloud</span>
+            <span class="stack-pill">Prompt Engineering</span>
+            <span class="stack-pill">Hugging Face</span>
+          </div>
+        </div>
+
+        <div class="proj-bottom">
+
+  <a href="#"
+     class="proj-link"
+     onclick="event.stopPropagation(); openCertificate('aws-cert')">
+
+     View Certificate
+
+     <svg viewBox="0 0 24 24">
+       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+       <polyline points="15 3 21 3 21 9"/>
+       <line x1="10" y1="14" x2="21" y2="3"/>
+     </svg>
+
+  </a>
+
+  <span class="proj-role">
+    Jan 2026 – Mar 2026 · Remote
+  </span>
+
+</div>
+
+<div id="aws-cert" class="certificate-box" style="display:none;padding:1rem 1.5rem;border-top:1px dashed var(--border);background:#fafbfd">
+  <img src="awsgenai.png"
+       alt="AWS Certificate"
+       style="width:100%;border-radius:12px;border:1px solid var(--border)">
+</div>
+
+        <div class="proj-expand">
+          <div class="expand-title">What I learned & built</div>
+
+          <ul class="expand-points">
+            <li>Built AI-driven workflows using Generative AI concepts and cloud infrastructure</li>
+            <li>Worked with Large Language Models and Hugging Face integrations</li>
+            <li>Designed prompts for context-aware and optimized AI responses</li>
+            <li>Explored AI automation and deployment strategies on AWS platforms</li>
+            <li>Gained practical exposure to real-world GenAI application development</li>
+          </ul>
+
+          <div class="expand-title">Certification</div>
+
+          <ul class="expand-points">
+            <li>AWS Generative AI Virtual Internship — AICTE Certified</li>
+            <li>Successfully completed internship training and project-based learning modules</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- GOOGLE -->
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#22c55e,#0ea5e9)"></div>
+
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-green">🤖 Google</span>
+            <span class="proj-tag tag-green">AI/ML Internship</span>
+          </div>
+
+          <div class="proj-name">Google AI-ML Virtual Internship</div>
+
+          <div class="proj-desc">
+            Completed a 10-week AI/ML internship focused on Machine Learning pipelines,
+            Deep Learning fundamentals, model training, and real-world AI application development.
+          </div>
+
+          <div class="proj-stack">
+            <span class="stack-pill">TensorFlow</span>
+            <span class="stack-pill">Deep Learning</span>
+            <span class="stack-pill">Machine Learning</span>
+            <span class="stack-pill">Data Preprocessing</span>
+            <span class="stack-pill">Model Evaluation</span>
+          </div>
+        </div>
+
+        <div class="proj-bottom">
+
+  <a href="#"
+     class="proj-link"
+     onclick="event.stopPropagation(); openCertificate('google-cert')">
+
+     View Certificate
+
+     <svg viewBox="0 0 24 24">
+       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+       <polyline points="15 3 21 3 21 9"/>
+       <line x1="10" y1="14" x2="21" y2="3"/>
+     </svg>
+
+  </a>
+
+  <span class="proj-role">
+    Apr 2025 – Jun 2025 · Remote
+  </span>
+
+</div>
+
+<div id="google-cert" class="certificate-box" style="display:none;padding:1rem 1.5rem;border-top:1px dashed var(--border);background:#fafbfd">
+  <img src="googleaiml.png"
+       alt="Google Certificate"
+       style="width:100%;border-radius:12px;border:1px solid var(--border)">
+</div> 
+
+        <div class="proj-expand">
+          <div class="expand-title">What I learned & built</div>
+
+          <ul class="expand-points">
+            <li>Built AI-powered mini applications using TensorFlow and ML concepts</li>
+            <li>Performed preprocessing and cleaning on raw datasets for training</li>
+            <li>Trained and evaluated Machine Learning models for accuracy and performance</li>
+            <li>Worked with Deep Learning concepts and supervised learning techniques</li>
+            <li>Strengthened practical understanding of AI workflows and model deployment</li>
+          </ul>
+
+          <div class="expand-title">Certification</div>
+
+          <ul class="expand-points">
+            <li>Google AI-ML Virtual Internship — AICTE Certified</li>
+            <li>Successfully completed industry-level AI/ML training modules</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- NPTEL -->
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#8b5cf6,#4f46e5)"></div>
+
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-purple">📘 NPTEL</span>
+            <span class="proj-tag tag-purple">Certified Courses</span>
+          </div>
+
+          <div class="proj-name">NPTEL Certifications</div>
+
+          <div class="proj-desc">
+            Completed multiple NPTEL-certified courses focused on programming,
+            problem-solving, and human-computer interaction concepts.
+          </div>
+
+          <div class="proj-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">Problem Solving</span>
+            <span class="stack-pill">UI/UX</span>
+            <span class="stack-pill">Human Computer Interaction</span>
+          </div>
+        </div>
+
+        <div class="proj-bottom">
+          <span class="proj-role" style="margin-left:0">
+            Self-paced Certification Programs
+          </span>
+        </div>
+
+        <div class="proj-expand">
+          <div class="expand-title">Courses completed</div>
+
+          <ul class="expand-points">
+            <li>Joy of Computing using Python — focused on logic building and Python programming</li>
+            <li>Design & Implementation of Human Computer Interaction — focused on UI/UX and usability principles</li>
+            <li>Strengthened analytical thinking and practical software development skills</li>
+            <li>Applied concepts in academic and personal AI/ML projects</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- PROJECTS -->
+<section id="projects" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Projects</div>
+    <h2 class="section-title fade-up">Things I've built</h2>
+    <p class="section-sub fade-up">Click any project card to see more details. Live demos available where hosted.</p>
+    <div class="projects-grid">
+
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#4f6ef7,#8b5cf6)"></div>
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-blue">🏆 HackVerse Hackathon</span>
+            <span class="proj-tag tag-purple">Team Lead</span>
+          </div>
+          <div class="proj-name">ClauseGenie</div>
+          <div class="proj-desc">AI-powered Legal Document Analyzer that automates clause extraction and summarization using NLP and Generative AI — reducing manual legal review effort.</div>
+          <div class="proj-stack">
+            <span class="stack-pill">Python</span><span class="stack-pill">Flask</span><span class="stack-pill">NLP</span><span class="stack-pill">LLMs</span><span class="stack-pill">HTML/CSS/JS</span>
+          </div>
+        </div>
+        <div class="proj-bottom">
+          <a href="https://midhulajoga.github.io/ClauseGenie/" class="proj-link" onclick="event.stopPropagation()" target="_blank">Live demo <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="proj-role">Team of 3 · Led team</span>
+        </div>
+        <div class="proj-expand">
+          <div class="expand-title">What I built</div>
+          <ul class="expand-points">
+            <li>Led a team of 3 to build the full application under hackathon conditions</li>
+            <li>Designed the NLP pipeline for clause extraction and summarization using LLMs</li>
+            <li>Built the Flask backend and integrated Generative AI models end-to-end</li>
+            <li>Created the frontend UI with HTML, CSS, and JavaScript</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#2db87a,#0ea5e9)"></div>
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-green">🌿 Team of 4</span>
+            <span class="proj-tag tag-green">Website Builder</span>
+          </div>
+          <div class="proj-name">EcoLoom</div>
+          <div class="proj-desc">Sustainable fashion marketplace where users can buy, sell, and customize eco-friendly clothing. Conceptualized the idea and built the complete website from scratch.</div>
+          <div class="proj-stack">
+            <span class="stack-pill">HTML</span><span class="stack-pill">CSS</span><span class="stack-pill">JavaScript</span><span class="stack-pill">E-Commerce</span>
+          </div>
+        </div>
+        <div class="proj-bottom">
+          <a href="https://midhulajoga.github.io/EcoLoom/" class="proj-link" onclick="event.stopPropagation()" target="_blank">Live site <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="proj-role">Idea + Full Website</span>
+        </div>
+        <div class="proj-expand">
+          <div class="expand-title">My contribution</div>
+          <ul class="expand-points">
+            <li>Ideated the EcoLoom concept — sustainable, customizable fashion marketplace</li>
+            <li>Built the entire website frontend: buy, sell, customize, cart, and profile pages</li>
+            <li>Designed the user experience and navigation flow for the platform</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#f47c3c,#f7b733)"></div>
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-orange">💸 Gen-AI Hackathon</span>
+            <span class="proj-tag tag-orange">Team of 3</span>
+          </div>
+          <div class="proj-name">BudgetBoss</div>
+          <div class="proj-desc">Personal finance tracker with an integrated AI chatbot for smart budgeting advice and real-time insights. Led the backend and GenAI integration for the conversational interface.</div>
+          <div class="proj-stack">
+            <span class="stack-pill">Python</span><span class="stack-pill">GenAI</span><span class="stack-pill">Chatbot</span><span class="stack-pill">REST APIs</span>
+          </div>
+        </div>
+        <div class="proj-bottom">
+          <a href="https://midhulajoga.github.io/BudgetBoss/" class="proj-link" onclick="event.stopPropagation()" target="_blank">Live site <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="proj-role">Backend + GenAI</span>
+        </div>
+        <div class="proj-expand">
+          <div class="expand-title">My contribution</div>
+          <ul class="expand-points">
+            <li>Built the entire backend logic and API integration for the finance tracker</li>
+            <li>Integrated Generative AI for the chatbot, enabling natural language expense queries</li>
+            <li>Contributed to the Gen-AI Hackathon solution design and architecture</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#8b5cf6,#4f6ef7)"></div>
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-purple">🇮🇳 Smart India Hackathon</span>
+            <span class="proj-tag tag-purple">Team of 6</span>
+          </div>
+          <div class="proj-name">EduVerifier</div>
+          <div class="proj-desc">Fake certificate detection platform with role-based portals for students, institutes, organizations, government, and admins — a complete trust layer for academic credentials.</div>
+          <div class="proj-stack">
+            <span class="stack-pill">Multi-portal</span><span class="stack-pill">Frontend</span><span class="stack-pill">Verification</span><span class="stack-pill">Govt. Tech</span>
+          </div>
+        </div>
+        <div class="proj-bottom">
+          <span class="proj-role" style="margin-left:0">Frontend + Product Design</span>
+        </div>
+        <div class="proj-expand">
+          <div class="expand-title">My contribution</div>
+          <ul class="expand-points">
+            <li>Designed and built all 5 role-based portals: student, institute, organization, government, admin</li>
+            <li>Each portal has a dedicated vault, credential flow, and access control UI</li>
+            <li>Contributed key product ideas for the certificate verification architecture</li>
+            <li>Built for Smart India Hackathon with a team of 6</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#2db87a,#0ea5e9)"></div>
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-green">Personal Project</span>
+            <span class="proj-tag tag-green">87% Accuracy</span>
+          </div>
+          <div class="proj-name">SmartGrade</div>
+          <div class="proj-desc">Student Performance Predictor trained on 100,000 raw records (67K after preprocessing), achieving 87% accuracy with Decision Tree and Logistic Regression models.</div>
+          <div class="proj-stack">
+            <span class="stack-pill">Scikit-learn</span><span class="stack-pill">Pandas</span><span class="stack-pill">Streamlit</span><span class="stack-pill">Python</span>
+          </div>
+        </div>
+        <div class="proj-bottom">
+          <a href="https://midhulajoga.github.io/Student-Performance-Predictor/" class="proj-link" onclick="event.stopPropagation()" target="_blank">Live demo <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="proj-role">Solo · Full ML Pipeline</span>
+        </div>
+        <div class="proj-expand">
+          <div class="expand-title">Technical highlights</div>
+          <ul class="expand-points">
+            <li>Preprocessed 100,000 raw records → 67,000 clean records using Pandas</li>
+            <li>Applied feature engineering and evaluated multiple ML models</li>
+            <li>Achieved 87% accuracy with Decision Tree and Logistic Regression</li>
+            <li>Built an interactive Streamlit UI for real-time predictions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up" onclick="toggleExpand(this)">
+        <div class="proj-banner" style="background:linear-gradient(90deg,#f47c3c,#f7b733)"></div>
+        <div class="proj-top">
+          <div class="proj-tags">
+            <span class="proj-tag tag-orange">Personal Project</span>
+            <span class="proj-tag tag-orange">10+ Stocks</span>
+          </div>
+          <div class="proj-name">Stock Predictor</div>
+          <div class="proj-desc">AI-based stock trend forecasting web app analyzing 10+ stocks using ML models and REST APIs, with real-time data visualization dashboards.</div>
+          <div class="proj-stack">
+            <span class="stack-pill">Python</span><span class="stack-pill">Flask</span><span class="stack-pill">REST APIs</span><span class="stack-pill">ML</span>
+          </div>
+        </div>
+        <div class="proj-bottom">
+          <a href="https://midhulajoga.github.io/Stock-Predictor/" class="proj-link" onclick="event.stopPropagation()" target="_blank">Live demo <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="proj-role">Solo · Full-stack</span>
+        </div>
+        <div class="proj-expand">
+          <div class="expand-title">Technical highlights</div>
+          <ul class="expand-points">
+            <li>Fetches live stock data via REST APIs and runs ML-based trend prediction</li>
+            <li>Covers 10+ stocks with visual forecasting dashboards</li>
+            <li>Built with Python backend on Flask and interactive chart rendering</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag fade-up">Achievements</div>
+    <h2 class="section-title fade-up">Milestones</h2>
+    <div class="ach-grid">
+      <div class="ach-card fade-up"><div class="ach-emoji">🏆</div><div class="ach-text">Competed in HackVerse, Gen-AI Hackathon, and Smart India Hackathon — building AI-powered solutions under high-pressure conditions</div></div>
+      <div class="ach-card fade-up"><div class="ach-emoji">💻</div><div class="ach-text">Solved 350+ coding problems on LeetCode, demonstrating strong algorithmic thinking and problem-solving skills</div></div>
+      <div class="ach-card fade-up"><div class="ach-emoji">🎓</div><div class="ach-text">Maintained 9.28 CGPA in B.Tech CSE, ranking among the top performers in the department at GVP</div></div>
+      <div class="ach-card fade-up"><div class="ach-emoji">🤝</div><div class="ach-text">Mentored junior students in programming and AI/ML concepts, building a stronger peer learning culture</div></div>
+      <div class="ach-card fade-up"><div class="ach-emoji">📜</div><div class="ach-text">NPTEL certified in Joy of Computing using Python and Design & Implementation of Human Computer Interaction</div></div>
+      <div class="ach-card fade-up"><div class="ach-emoji">📊</div><div class="ach-text">Scored 977/1000 (97.7%) in MPC — a strong academic foundation for a CSE career in AI</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Education</div>
+    <h2 class="section-title fade-up">Academic background</h2>
+    <div class="edu-cards">
+      <div class="edu-card fade-up">
+        <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+        <div class="edu-inst">Gayatri Vidya Parishad, Kommadi</div>
+        <div class="edu-score">⭐ CGPA 9.28 / 10</div>
+        <div class="edu-year">2023 – 2027 · DSA · ML · DL · DBMS · OS · Networks</div>
+      </div>
+      <div class="edu-card fade-up">
+        <div class="edu-degree">MPC — Mathematics, Physics, Chemistry</div>
+        <div class="edu-inst">Sri Basara Jr. College, Tagarapuvalasa</div>
+        <div class="edu-score">⭐ 977 / 1000 — 97.7%</div>
+        <div class="edu-year">2021 – 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="cta-banner fade-up">
+      <h2>Let's build something together</h2>
+      <p>Open to internships, collaborations, and exciting AI/ML projects. Say hello!</p>
+      <div class="contact-links">
+        <a href="mailto:midhula.joga1234@gmail.com" class="contact-link"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email</a>
+        <a href="https://linkedin.com/in/midhula-joga-4a3006301/" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://github.com/MidhulaJoga" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+        <a href="https://leetcode.com/u/MidhulaJoga/" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>LeetCode</a>
+        <a href="tel:+919951277132" class="contact-link"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.26h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.01-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91-9951277132</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Designed with care · Midhula Joga · 2025</p></footer>
+
+<script>
+function toggleExpand(card){
+  const panel = card.querySelector('.proj-expand');
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.proj-expand.open').forEach(p=>p.classList.remove('open'));
+  if(!isOpen) panel.classList.add('open');
+}
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+function openCertificate(id){
+  event.preventDefault();
+
+  const cert = document.getElementById(id);
+
+  if(cert.style.display === "none"){
+    cert.style.display = "block";
+  } else {
+    cert.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>
